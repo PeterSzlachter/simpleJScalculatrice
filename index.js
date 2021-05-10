@@ -26,31 +26,42 @@ function askCalcul() {
   console.log(numberOne)
   console.log(numberTwo)
   console.log(typeof(choice))
-  switch (choice)
+ try
   {
-    case 1:
-       result = numberOne + numberTwo
-    break
-    case 2:
-       result = numberOne * numberTwo
-    break
-    case 3:
-       result = numberOne - numberTwo
-    break
-    case 4:
-      if(nombreB == 0) {
-        throw new Error("Impossible de diviser par 0 !")
-      }
-       result = numberOne / numberTwo
-    break
-    default: 
-        throw new Error("Une erreur est survenue.")
+    switch (choice)
+    {
+      case 1:
+        result = numberOne + numberTwo
+      break
+      case 2:
+        result = numberOne * numberTwo
+      break
+      case 3:
+        result = numberOne - numberTwo
+      break
+      case 4:
+        if(numberTwo == 0) {
+          throw new Error("Impossible de diviser par 0 !")
+        }
+        result = numberOne / numberTwo
+      break
+      default: 
+          throw new Error("Une erreur est survenue.")
+    }
+    alert(`Le résultat de votre calcul est ${result}`)
   }
-  alert(`Le résultat de votre calcul est ${result}`)
+  catch(error)
+  {
+    alert(error)
+  }
 }
 
 do {
   askCalcul()
   play = confirm("Recommencer ?")
+  if (play)
+  {
+    result = 0
+  }
 }
 while(play)
